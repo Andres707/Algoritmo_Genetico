@@ -12,25 +12,21 @@ def cadenaN(numerolimite):
     shuffle(x)
     return x
 #Valoracion
-def valoracion(matriz,np):
+def valoracion(Matriz,np):
     Valor = []
     contador = 0
-    ax=0
     for m in range(np):
+        matriz=Matriz[m]
         for i in range(8):
-            oi = matriz[m][i]
+            oi = matriz[i]
             for j in range(8):
-                if(i>0):
-                    oj = matriz[ax][j]
-                else:
-                    oj=matriz[i][j]
+                oj=matriz[j]
                 if(i != j):
                     _v1=math.fabs(oi-oj)
-                    _v2=math.fabs(i+1-j+1)
+                    _v2=math.fabs(i-j)
                     if(_v1 == _v2):
                         contador=contador+1
-        ax = ax + 1
-        #contador=round(contador/2,0)
+        contador=round(contador/2,0)
         Valor.append(contador)
         contador=contador*0
     return Valor
@@ -61,7 +57,7 @@ def cruse(Ganadores,matriz):
     Ganadores[0]=Ganadores[0]-1
     Ganadores[1]=Ganadores[1]-1
     a1 = random.randrange(1,8)
-    print('Alelo donde se segmenta: ',a1)
+    #print('Alelo donde se segmenta: ',a1)
     ax1=a1
     for j in range(2):
         for i in range(a1):
@@ -98,10 +94,10 @@ def seleccion(padres,hijos,matriz):
         ax="[11]"
     else:
         ax="[0]"
-        print("sin Cambios entre el hijo 1")
+        #print("sin Cambios entre el hijo 1")
     if(hijos[1]<matriz[padres[1]]):
         ax=ax+" [22]"
     else:
         ax="[0]"
-        print("sin Cambios entre el hijo 2")
+        #print("sin Cambios entre el hijo 2")
     return ax
